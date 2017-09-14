@@ -13,7 +13,7 @@ namespace WebApplication4.Controllers
         public string CustomerName { get; set; }
         public string Address { get; set; }
     }
-    public class TestController : Controller
+    public class EmployeeController : Controller
     {
         [NonAction]
         public string GetCustomer()
@@ -23,7 +23,11 @@ namespace WebApplication4.Controllers
             c.Address = "Address 1";
             return c.CustomerName + "|" + c.Address;
         }
-        public ActionResult GetView()
+        public ActionResult AddNew()
+        {
+            return View("CreateEmployee");
+        }
+        public ActionResult Index()
         {
             /*
             Employee emp = new Employee();
@@ -71,8 +75,8 @@ namespace WebApplication4.Controllers
                 empViewModels.Add(empViewModel);
             }
             employeeListViewModel.Employees = empViewModels;
-            employeeListViewModel.UserName = "Admin";
-            return View("MyView", employeeListViewModel);
+            //employeeListViewModel.UserName = "Admin";
+            return View("Index", employeeListViewModel);
         }
 
     }
