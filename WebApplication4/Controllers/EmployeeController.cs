@@ -8,26 +8,42 @@ using WebApplication4.ViewModels;
 
 namespace WebApplication4.Controllers
 {
-    public class Customer
-    {
-        public string CustomerName { get; set; }
-        public string Address { get; set; }
-    }
+    //public class Customer
+    //{
+    //    public string CustomerName { get; set; }
+    //    public string Address { get; set; }
+    //}
     public class EmployeeController : Controller
     {
-        [NonAction]
-        public string GetCustomer()
-        {
-            Customer c = new Customer();
-            c.CustomerName = "Customer 1";
-            c.Address = "Address 1";
-            return c.CustomerName + "|" + c.Address;
-        }
+        //[NonAction]
+        //public string GetCustomer()
+        //{
+        //    Customer c = new Customer();
+        //    c.CustomerName = "Customer 1";
+        //    c.Address = "Address 1";
+        //    return c.CustomerName + "|" + c.Address;
+        //}
         public ActionResult AddNew()
         {
             return View("CreateEmployee");
         }
-        public ActionResult Index()
+        public string SaveEmployee(Employee e, string BtnSubmit)
+        {
+            //string mString = "";
+            switch (BtnSubmit)
+            {
+                case "Save Employee":
+                   // mString = e.FirstName + "|" + e.LastName + "|" + e.Salary;
+                    //break;
+                    return e.FirstName + "|" + e.LastName + "|" + e.Salary;
+                case "Cancel":
+                    return RedirectToAction("Index");
+            }
+            //return Content(mString);
+            return new EmptyResult();
+
+        }
+            public ActionResult Index()
         {
             /*
             Employee emp = new Employee();
@@ -79,5 +95,17 @@ namespace WebApplication4.Controllers
             return View("Index", employeeListViewModel);
         }
 
+        //个人练习
+        //public ActionResult aaa()
+        //{
+        //    Address adr = new Address();
+        //    adr.CityName = "Shenzhen";
+        //    adr.StateName = "Huagang Road";
+        //    Customer cus = new Customer() { FName = "steven",address=adr };
+        //    ViewBag.Cus = cus;
+        //    return View("aaa",cus);
+        //}
+
+        
     }
 }
